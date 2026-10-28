@@ -1,0 +1,40 @@
+.F                                                                       [100%]
+=================================== FAILURES ===================================
+____________________ test_compose_host_port_override[18001] ____________________
+
+host_port = '18001'
+
+    @pytest.mark.skipif(shutil.which("docker") is None, reason="Docker CLI is not installed")
+    @pytest.mark.parametrize("host_port", ["8000", "18001"])
+    def test_compose_host_port_override(host_port: str) -> None:
+        """Render a distinct host port while preserving the application's container port."""
+        root = Path(__file__).resolve().parents[2]
+        result = subprocess.run(
+            [
+                "docker",
+                "compose",
+                "--env-file",
+                ".env.example",
+                "config",
+                "--no-env-resolution",
+                "--format",
+                "json",
+            ],
+            cwd=root,
+            env={**os.environ, "APP_PORT": host_port},
+            capture_output=True,
+            text=True,
+            check=True,
+        )
+        ports = json.loads(result.stdout)["services"]["app"]["ports"]
+        assert len(ports) == 1
+>       assert str(ports[0]["published"]) == host_port
+E       AssertionError: assert '8000' == '18001'
+E         
+E         - 18001
+E         + 8000
+
+tests/integration/test_deployment.py:36: AssertionError
+=========================== short test summary info ============================
+FAILED tests/integration/test_deployment.py::test_compose_host_port_override[18001]
+1 failed, 1 passed in 0.12s

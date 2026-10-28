@@ -1,0 +1,18 @@
+.env
+.venv/
+__pycache__/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+data/
+*.egg-info/
+*.db
+*.db-*
+.env.*
+!.env.example
+.DS_Store
+
+# Private local documents and historical evidence
+/docs/*.pdf
+/local-evidence/
+.vscode/

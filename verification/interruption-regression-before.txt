@@ -1,0 +1,51 @@
+FF                                                                       [100%]
+=================================== FAILURES ===================================
+_______________ test_document_question_preserves_partial_booking _______________
+
+    def test_document_question_preserves_partial_booking() -> None:
+        """Answer a side question without losing previously collected booking fields."""
+        llm, memory, booking = FakeLLM(), FakeMemory(), FakeBooking()
+        state = BookingState(name="Robin", email="robin@example.com")
+        memory.save_booking("s", state)
+        llm.outputs = [IntentDecision(intent=Intent.QUESTION, changes_topic=True)]
+        service = RAGService(
+            memory, FakeVectors(), FakeEmbeddings(), llm, Settings(embedding_dimension=3), booking,
+        )
+        response = service.chat(ChatRequest(session_id="s", message="What does the document say?"))
+        assert response.booking is None
+>       assert memory.booking("s") == state
+E       AssertionError: assert None == BookingState(name='Robin', email='robin@example.com', date=None, time=None, awaiting_confirmation=False)
+E        +  where None = booking('s')
+E        +    where booking = <tests.fakes.FakeMemory object at 0x119fac610>.booking
+
+tests/unit/test_rag.py:116: AssertionError
+_________________ test_booking_resumes_after_document_question _________________
+
+booking = BookingHarness(client=<starlette.testclient.TestClient object at 0x11a076610>, llm=<tests.fakes.FakeLLM object at 0x11...h=True, expire_on_commit=False), repository=<app.repositories.booking_repo.SQLBookingRepository object at 0x119e57390>)
+
+    def test_booking_resumes_after_document_question(booking: BookingHarness) -> None:
+        """Resume real booking validation and persistence after a question interrupts collection."""
+        from app.schemas.chat import StandaloneQuery
+    
+        booking.turn("Book an interview. My name is Robin.", extraction(name="Robin"))
+        before = booking.memory.booking("s")
+        booking.llm.outputs.extend([
+            IntentDecision(intent=Intent.QUESTION, changes_topic=True),
+            StandaloneQuery(query="What does the handbook say about training?"),
+        ])
+        response = booking.client.post(
+            "/api/v1/chat", json={"session_id": "s", "message": "What does the handbook say?"}
+        )
+        assert response.status_code == 200
+        assert response.json()["booking"] is None
+>       assert booking.memory.booking("s") == before
+E       AssertionError: assert None == BookingState(name='Robin', email=None, date=None, time=None, awaiting_confirmation=False)
+E        +  where None = booking('s')
+E        +    where booking = <tests.fakes.FakeMemory object at 0x1166edc10>.booking
+E        +      where <tests.fakes.FakeMemory object at 0x1166edc10> = BookingHarness(client=<starlette.testclient.TestClient object at 0x11a076610>, llm=<tests.fakes.FakeLLM object at 0x11...h=True, expire_on_commit=False), repository=<app.repositories.booking_repo.SQLBookingRepository object at 0x119e57390>).memory
+
+tests/integration/test_booking.py:238: AssertionError
+=========================== short test summary info ============================
+FAILED tests/unit/test_rag.py::test_document_question_preserves_partial_booking
+FAILED tests/integration/test_booking.py::test_booking_resumes_after_document_question
+2 failed in 1.33s

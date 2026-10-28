@@ -1,0 +1,39 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+_____ test_tuned_threshold_preserves_evidence_and_rejects_unrelated_scores _____
+
+    def test_tuned_threshold_preserves_evidence_and_rejects_unrelated_scores() -> None:
+        """Keep measured education-level similarity while rejecting the unrelated rocket score."""
+        import math
+    
+        client = QdrantClient(":memory:")
+        settings = Settings(embedding_dimension=3)
+        repo = QdrantVectorRepository(client, settings)
+        evidence_id, unrelated_id = uuid4(), uuid4()
+        repo.upsert(
+            [
+                VectorChunk(
+                    id=uuid4(),
+                    embedding=[score, math.sqrt(1 - score * score), 0.0],
+                    payload=VectorPayload(
+                        document_id=document_id,
+                        chunk_index=0,
+                        text="Threshold fixture",
+                        filename="scores.txt",
+                        chunking_strategy=ChunkingStrategy.FIXED_SIZE,
+                    ),
+                )
+                for document_id, score in [(evidence_id, 0.5979), (unrelated_id, 0.576844)]
+            ]
+        )
+        results = repo.search([1, 0, 0], 5, settings.retrieval_score_threshold)
+>       assert [result.payload.document_id for result in results] == [evidence_id]
+E       AssertionError: assert [UUID('f4a77c...3673683dcd0')] == [UUID('f4a77c...4f90f15b56c')]
+E         
+E         Left contains one more item: UUID('c45b1d50-ea3f-437b-9ecf-73673683dcd0')
+E         Use -v to get more diff
+
+tests/unit/test_adapters.py:107: AssertionError
+=========================== short test summary info ============================
+FAILED tests/unit/test_adapters.py::test_tuned_threshold_preserves_evidence_and_rejects_unrelated_scores
+1 failed in 0.79s

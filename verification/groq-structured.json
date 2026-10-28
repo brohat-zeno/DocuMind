@@ -1,0 +1,15 @@
+{
+  "model": "openai/gpt-oss-20b",
+  "mode": "auto",
+  "intent": {
+    "intent": "booking",
+    "changes_topic": false
+  },
+  "booking": {
+    "name": "Ada Example",
+    "email": "ada@example.com",
+    "date": "2026-11-10",
+    "time": "14:00",
+    "action": "none"
+  }
+}

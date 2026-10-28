@@ -1,0 +1,30 @@
+[
+  {
+    "check": "pytest",
+    "exit_code": 0
+  },
+  {
+    "check": "ruff",
+    "exit_code": 0
+  },
+  {
+    "check": "mypy",
+    "exit_code": 0
+  },
+  {
+    "check": "calibration-mypy",
+    "exit_code": 0
+  },
+  {
+    "check": "compose",
+    "exit_code": 0
+  },
+  {
+    "check": "lock",
+    "exit_code": 0
+  },
+  {
+    "check": "demo-syntax",
+    "exit_code": 0
+  }
+]

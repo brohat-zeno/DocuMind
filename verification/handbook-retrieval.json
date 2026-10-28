@@ -1,0 +1,218 @@
+{
+  "fixture": "tests/fixtures/handbook.pdf",
+  "model": "BAAI/bge-small-en-v1.5",
+  "dimension": 384,
+  "threshold": 0.58,
+  "questions": [
+    {
+      "question": "Which training plans does the DocuMind Learning Centre offer?",
+      "expected": "Foundation and Advanced, in that order",
+      "chunks": [
+        {
+          "score": 0.77346766,
+          "filename": "handbook.pdf",
+          "chunk_index": 0,
+          "strategy": "recursive"
+        },
+        {
+          "score": 0.7261721,
+          "filename": "handbook.pdf",
+          "chunk_index": 0,
+          "strategy": "fixed_size"
+        },
+        {
+          "score": 0.61190975,
+          "filename": "handbook.pdf",
+          "chunk_index": 1,
+          "strategy": "recursive"
+        },
+        {
+          "score": 0.6109485,
+          "filename": "handbook.pdf",
+          "chunk_index": 2,
+          "strategy": "fixed_size"
+        },
+        {
+          "score": 0.5929606,
+          "filename": "handbook.pdf",
+          "chunk_index": 2,
+          "strategy": "recursive"
+        },
+        {
+          "score": 0.57828,
+          "filename": "handbook.pdf",
+          "chunk_index": 1,
+          "strategy": "fixed_size"
+        }
+      ]
+    },
+    {
+      "question": "What is the monthly price and workshop allowance of the Advanced plan?",
+      "expected": "NPR 7500 per month and six instructor-led workshops",
+      "chunks": [
+        {
+          "score": 0.7439092,
+          "filename": "handbook.pdf",
+          "chunk_index": 0,
+          "strategy": "recursive"
+        },
+        {
+          "score": 0.7084485,
+          "filename": "handbook.pdf",
+          "chunk_index": 0,
+          "strategy": "fixed_size"
+        },
+        {
+          "score": 0.5946304,
+          "filename": "handbook.pdf",
+          "chunk_index": 1,
+          "strategy": "recursive"
+        },
+        {
+          "score": 0.58127165,
+          "filename": "handbook.pdf",
+          "chunk_index": 2,
+          "strategy": "fixed_size"
+        },
+        {
+          "score": 0.5745838,
+          "filename": "handbook.pdf",
+          "chunk_index": 1,
+          "strategy": "fixed_size"
+        },
+        {
+          "score": 0.5680619,
+          "filename": "handbook.pdf",
+          "chunk_index": 2,
+          "strategy": "recursive"
+        }
+      ]
+    },
+    {
+      "question": "When is the DocuMind Learning Centre support desk open?",
+      "expected": "Monday through Friday, 09:00 to 17:00 Nepal time",
+      "chunks": [
+        {
+          "score": 0.7132069,
+          "filename": "handbook.pdf",
+          "chunk_index": 0,
+          "strategy": "fixed_size"
+        },
+        {
+          "score": 0.7114398,
+          "filename": "handbook.pdf",
+          "chunk_index": 1,
+          "strategy": "recursive"
+        },
+        {
+          "score": 0.7007009,
+          "filename": "handbook.pdf",
+          "chunk_index": 2,
+          "strategy": "fixed_size"
+        },
+        {
+          "score": 0.68871963,
+          "filename": "handbook.pdf",
+          "chunk_index": 0,
+          "strategy": "recursive"
+        },
+        {
+          "score": 0.68021995,
+          "filename": "handbook.pdf",
+          "chunk_index": 1,
+          "strategy": "fixed_size"
+        },
+        {
+          "score": 0.67648435,
+          "filename": "handbook.pdf",
+          "chunk_index": 2,
+          "strategy": "recursive"
+        }
+      ]
+    },
+    {
+      "question": "What scholarship policy does the handbook specify?",
+      "expected": "not stated",
+      "chunks": [
+        {
+          "score": 0.6560544,
+          "filename": "handbook.pdf",
+          "chunk_index": 2,
+          "strategy": "fixed_size"
+        },
+        {
+          "score": 0.62154746,
+          "filename": "handbook.pdf",
+          "chunk_index": 2,
+          "strategy": "recursive"
+        },
+        {
+          "score": 0.5968732,
+          "filename": "handbook.pdf",
+          "chunk_index": 0,
+          "strategy": "fixed_size"
+        },
+        {
+          "score": 0.5676326,
+          "filename": "handbook.pdf",
+          "chunk_index": 0,
+          "strategy": "recursive"
+        },
+        {
+          "score": 0.5577063,
+          "filename": "handbook.pdf",
+          "chunk_index": 1,
+          "strategy": "fixed_size"
+        },
+        {
+          "score": 0.5548334,
+          "filename": "handbook.pdf",
+          "chunk_index": 1,
+          "strategy": "recursive"
+        }
+      ]
+    },
+    {
+      "question": "What accommodation policy does the handbook specify?",
+      "expected": "not stated",
+      "chunks": [
+        {
+          "score": 0.6425662,
+          "filename": "handbook.pdf",
+          "chunk_index": 2,
+          "strategy": "fixed_size"
+        },
+        {
+          "score": 0.59594756,
+          "filename": "handbook.pdf",
+          "chunk_index": 2,
+          "strategy": "recursive"
+        },
+        {
+          "score": 0.5957282,
+          "filename": "handbook.pdf",
+          "chunk_index": 0,
+          "strategy": "fixed_size"
+        },
+        {
+          "score": 0.5814042,
+          "filename": "handbook.pdf",
+          "chunk_index": 1,
+          "strategy": "fixed_size"
+        },
+        {
+          "score": 0.56888086,
+          "filename": "handbook.pdf",
+          "chunk_index": 1,
+          "strategy": "recursive"
+        },
+        {
+          "score": 0.56651527,
+          "filename": "handbook.pdf",
+          "chunk_index": 0,
+          "strategy": "recursive"
+        }
+      ]
+    }
+  ]
+}

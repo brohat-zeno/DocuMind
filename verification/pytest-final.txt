@@ -1,0 +1,23 @@
+============================= test session starts ==============================
+platform darwin -- Python 3.11.15, pytest-9.1.1, pluggy-1.7.0
+rootdir: .
+configfile: pyproject.toml
+testpaths: tests
+plugins: asyncio-1.4.1, anyio-4.15.1
+asyncio: mode=Mode.AUTO, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collected 134 items
+
+tests/integration/test_booking.py ...........                            [  8%]
+tests/integration/test_chat.py ..                                        [  9%]
+tests/integration/test_deployment.py ..                                  [ 11%]
+tests/integration/test_ingestion.py ..............                       [ 21%]
+tests/unit/test_adapters.py ...                                          [ 23%]
+tests/unit/test_booking.py ...............                               [ 35%]
+tests/unit/test_chunking.py ............................................ [ 67%]
+................                                                         [ 79%]
+tests/unit/test_config.py ....                                           [ 82%]
+tests/unit/test_extraction.py .......                                    [ 88%]
+tests/unit/test_providers.py ...........                                 [ 96%]
+tests/unit/test_rag.py .....                                             [100%]
+
+============================= 134 passed in 1.89s ==============================

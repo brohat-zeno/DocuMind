@@ -1,0 +1,24 @@
+{
+  "checks": [
+    {
+      "command": "uv sync --frozen --python 3.11",
+      "exit_code": 0
+    },
+    {
+      "command": "docker compose up --build -d (isolated project, APP_PORT=18001)",
+      "exit_code": 0
+    },
+    {
+      "command": "GET missing document from fresh app",
+      "http_status": 404
+    },
+    {
+      "running_services": [
+        "app",
+        "qdrant",
+        "redis"
+      ]
+    }
+  ],
+  "note": "Source copy excludes existing env, data and virtualenv; fresh env set from example with private key and isolated port. Test containers/volumes removed afterward."
+}

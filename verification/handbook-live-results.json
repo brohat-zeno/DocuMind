@@ -1,0 +1,160 @@
+{
+  "date": "2026-10-27",
+  "fixture": "tests/fixtures/handbook.pdf",
+  "method": "verification/demo.sh with curl --fail-with-body; exit 0",
+  "responses": [
+    {
+      "document_id": "9675d9df-08f6-4af0-a073-19aa1b5fdc8f",
+      "filename": "handbook.pdf",
+      "chunking_strategy": "fixed_size",
+      "chunk_count": 3
+    },
+    {
+      "document_id": "b422e8a5-4bf8-4810-ad63-aa0dd0f5f03b",
+      "filename": "handbook.pdf",
+      "chunking_strategy": "recursive",
+      "chunk_count": 3
+    },
+    {
+      "session_id": "documind-demo-1793117263",
+      "answer": "Foundation, Advanced",
+      "sources": [
+        {
+          "document_id": "9675d9df-08f6-4af0-a073-19aa1b5fdc8f",
+          "filename": "handbook.pdf",
+          "chunk_index": 0
+        },
+        {
+          "document_id": "b422e8a5-4bf8-4810-ad63-aa0dd0f5f03b",
+          "filename": "handbook.pdf",
+          "chunk_index": 0
+        },
+        {
+          "document_id": "9675d9df-08f6-4af0-a073-19aa1b5fdc8f",
+          "filename": "handbook.pdf",
+          "chunk_index": 2
+        },
+        {
+          "document_id": "b422e8a5-4bf8-4810-ad63-aa0dd0f5f03b",
+          "filename": "handbook.pdf",
+          "chunk_index": 2
+        },
+        {
+          "document_id": "9675d9df-08f6-4af0-a073-19aa1b5fdc8f",
+          "filename": "handbook.pdf",
+          "chunk_index": 1
+        }
+      ],
+      "booking": null
+    },
+    {
+      "session_id": "documind-demo-1793117263",
+      "answer": "**Monthly price:** NPR\u202f7500  \n**Instructor\u2011led workshops:** 6 per month",
+      "sources": [
+        {
+          "document_id": "b422e8a5-4bf8-4810-ad63-aa0dd0f5f03b",
+          "filename": "handbook.pdf",
+          "chunk_index": 0
+        },
+        {
+          "document_id": "9675d9df-08f6-4af0-a073-19aa1b5fdc8f",
+          "filename": "handbook.pdf",
+          "chunk_index": 0
+        },
+        {
+          "document_id": "b422e8a5-4bf8-4810-ad63-aa0dd0f5f03b",
+          "filename": "handbook.pdf",
+          "chunk_index": 1
+        }
+      ],
+      "booking": null
+    },
+    {
+      "session_id": "documind-demo-1793117263-unknown",
+      "answer": "The documents do not contain information that answers this question.",
+      "sources": [],
+      "booking": null
+    },
+    {
+      "session_id": "documind-demo-1793117263-smalltalk",
+      "answer": "I can answer questions about your documents or help book an interview.",
+      "sources": [],
+      "booking": null
+    },
+    {
+      "session_id": "documind-demo-1793117263-booking",
+      "answer": "Please provide a valid name, email, date, time.",
+      "sources": [],
+      "booking": {
+        "status": "collecting",
+        "missing_fields": [
+          "name",
+          "email",
+          "date",
+          "time"
+        ],
+        "booking_id": null
+      }
+    },
+    {
+      "session_id": "documind-demo-1793117263-booking",
+      "answer": "Please provide a valid date, time.",
+      "sources": [],
+      "booking": {
+        "status": "collecting",
+        "missing_fields": [
+          "date",
+          "time"
+        ],
+        "booking_id": null
+      }
+    },
+    {
+      "session_id": "documind-demo-1793117263-booking",
+      "answer": "Please confirm: Demo Example, demo@example.com, 2026-11-26 at 11:30 (Asia/Kathmandu). Reply yes to book or no to cancel.",
+      "sources": [],
+      "booking": {
+        "status": "awaiting_confirmation",
+        "missing_fields": [],
+        "booking_id": null
+      }
+    },
+    {
+      "session_id": "documind-demo-1793117263-booking",
+      "answer": "Your interview is confirmed. Booking id: 8dc14ef6-1bdf-4ce8-94b8-e73a0f75e8c5.",
+      "sources": [],
+      "booking": {
+        "status": "confirmed",
+        "missing_fields": [],
+        "booking_id": "8dc14ef6-1bdf-4ce8-94b8-e73a0f75e8c5"
+      }
+    }
+  ],
+  "storage_readback": {
+    "documents": [
+      {
+        "filename": "handbook.pdf",
+        "chunking_strategy": "fixed_size",
+        "chunk_count": 3
+      },
+      {
+        "filename": "handbook.pdf",
+        "chunking_strategy": "recursive",
+        "chunk_count": 3
+      }
+    ],
+    "booking_count_for_demo_session": 1,
+    "booking": {
+      "booking_date": "2026-11-26",
+      "booking_time": "11:30:00.000000"
+    },
+    "booking_partial_exists": false,
+    "booking_history_messages": 8,
+    "booking_history_ttl_seconds": 86360,
+    "question_history_messages": 4,
+    "question_history_ttl_seconds": 86277,
+    "vector_count": 6,
+    "vector_dimensions": 384,
+    "vector_distance": "Cosine"
+  }
+}

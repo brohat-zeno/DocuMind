@@ -1,0 +1,92 @@
+%PDF-1.3
+%‚„œ”
+1 0 obj
+<<
+/Producer (pypdf)
+>>
+endobj
+2 0 obj
+<<
+/Type /Pages
+/Count 1
+/Kids [ 4 0 R ]
+>>
+endobj
+3 0 obj
+<<
+/Type /Catalog
+/Pages 2 0 R
+>>
+endobj
+4 0 obj
+<<
+/Type /Page
+/Resources <<
+/Font <<
+/F1 <<
+/Type /Font
+/Subtype /Type1
+/BaseFont /Helvetica
+>>
+>>
+>>
+/MediaBox [ 0.0 0.0 612 792 ]
+/Contents 5 0 R
+/Parent 2 0 R
+>>
+endobj
+5 0 obj
+<<
+/Length 1951
+>>
+stream
+BT /F1 10 Tf 40 750 Td 14 TL
+(DOCUMIND DEMONSTRATION HANDBOOK) Tj T*
+() Tj T*
+(The DocuMind Learning Centre offers two training plans, in this order: Foundation and Advanced.) Tj T*
+(The Foundation plan costs NPR 3000 per month. It includes two instructor-led workshops each) Tj T*
+(month and access to the beginner exercise library. Foundation is intended for first-time Python) Tj T*
+(learners.) Tj T*
+() Tj T*
+(The second plan, Advanced, costs NPR 7500 per month. Advanced includes six instructor-led) Tj T*
+(workshops each month, one individual mentoring session, and access to the advanced exercise) Tj T*
+(library. Learners should complete the Foundation course or pass a placement assessment before) Tj T*
+(joining Advanced.) Tj T*
+() Tj T*
+(Both plans include email support. The support desk operates Monday through Friday from 09:00 to) Tj T*
+(17:00 Nepal time. Support requests are answered within two business days. There is no weekend) Tj T*
+(support desk service.) Tj T*
+() Tj T*
+(The learning centre is located in Lalitpur, Nepal. In-person workshops take place in Room 204.) Tj T*
+(Online workshops use a meeting link sent the day before the workshop. Learners should bring a) Tj T*
+(laptop with Python 3.11 or newer installed.) Tj T*
+() Tj T*
+(Interview preparation sessions last 45 minutes and cover Python fundamentals, SQL queries, and) Tj T*
+(API design. A learner can request an interview preparation booking by providing a name, email) Tj T*
+(address, future date, and time. A booking is reserved only after the learner confirms the) Tj T*
+(complete summary.) Tj T*
+() Tj T*
+(Refund requests must be submitted within seven calendar days of the initial payment. A refund) Tj T*
+(is available only when the learner has attended no workshops. Submit a refund request by) Tj T*
+(emailing support@documind.example with the payment receipt number. This handbook does not state) Tj T*
+(any scholarship or accommodation policy.) Tj T*
+ET
+endstream
+endobj
+xref
+0 6
+0000000000 65535 f 
+0000000015 00000 n 
+0000000054 00000 n 
+0000000113 00000 n 
+0000000162 00000 n 
+0000000343 00000 n 
+trailer
+<<
+/Size 6
+/Root 3 0 R
+/Info 1 0 R
+>>
+startxref
+2346
+%%EOF

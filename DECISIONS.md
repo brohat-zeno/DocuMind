@@ -1,0 +1,33 @@
+# Decisions
+- Use synchronous SQLAlchemy sessions and synchronous providers in synchronous FastAPI handlers, which FastAPI dispatches to its worker thread pool.
+- Interpret booking dates using BOOKING_TIMEZONE (UTC by default), and require a date strictly later than today.
+- Decode TXT as UTF-8 with BOM support, falling back to Latin-1.
+- Treat one history turn as one user/assistant exchange.
+- Allow application startup without an OpenAI key so offline tests and boot checks work; provider calls report a configuration error until configured.
+- Disable FastAPI Swagger, ReDoc, and the OpenAPI HTTP route so the app exposes exactly the three specified operations and no UI.
+- Match filename extensions case-insensitively; require application/pdf or text/plain MIME types, allowing charset parameters.
+- Enforce the upload limit on the bounded file read; 10 MB means 10 × 1024 × 1024 bytes.
+- Use 64-text embedding batches and a 60-second provider timeout; the original 0.3 threshold was replaced by measured BGE calibration below.
+- Preserve exact character overlap in recursive chunks; prefer paragraph, sentence, and word pieces, falling back to characters when necessary.
+- Use UUIDv5 point IDs scoped to a UUIDv4 document ID so vector batches have deterministic identifiers.
+- Create SQLite tables at startup and the Qdrant collection lazily on first ingestion; no migration tooling is added.
+- Use bounded synchronous compensating deletes for ingestion; attempt both stores even if one cleanup fails, and report cleanup failure honestly.
+- Treat a document question during booking as a temporary interruption: answer it and preserve partial fields; an explicit change to other topics still abandons the partial booking.
+- Require a separate explicit affirmative after the full booking summary; any changed field requires a new confirmation.
+- Confirm only when both the LLM action and a normalized affirmative phrase match; affirmative phrases are configurable in Settings.
+- A booking slot is the exact date+time pair, globally unique; no duration, calendar integration, or email delivery is implied.
+- On a slot conflict, preserve name, email, and date, clear time, and ask for another time or date.
+- Return all retrieved chunks used as context as sources; empty retrieval returns a fixed answer without a generation call.
+- Keep FastAPI's standard 422 detail body for transport validation; domain errors use an error object with code and message.
+- Use plain list/object dictionaries only inside SDK, serialization, and ORM adapters; cross-layer application data uses Pydantic models.
+- Live verification found port 8000 occupied by another application; Compose now accepts APP_PORT (default 8000), and this local verification uses 8001.
+- Set the example deployment timezone to Asia/Kathmandu; retain UTC as the code fallback when no environment setting is provided.
+- Initial live verification stopped at OpenAI credit_balance_exhausted/insufficient_quota; no successful OpenAI results or retrieval scores were claimed before the subsequent user-authorized provider swap.
+- Deliberate user-authorized provider swap on 2026-10-27: no OpenAI billing; use Groq chat plus local FastEmbed embeddings while retaining both provider Protocols and the OpenAI implementations.
+- Default Groq model openai/gpt-oss-20b is listed as a production model with strict JSON-schema support in Groq docs checked on 2026-10-27; other models use validated JSON mode under the auto setting, retrying once on invalid output.
+- Use FastEmbed BAAI/bge-small-en-v1.5 with 384-dimensional vectors read from the installed model registry; validate explicit dimensions and reject incompatible existing Qdrant collections without deleting them.
+- Load the local model lazily and retain its downloaded files in a named Docker volume; serialize model loading/inference for the shared tokenizer.
+- Retain the configured BGE cosine threshold of 0.58; earlier calibration is private and is not evidence of handbook accuracy. The public retrieval utility measures handbook scores without changing the threshold.
+- Retain the answer-only-from-context instruction because similarity alone does not establish answerability; irrelevant chunks may pass a score threshold.
+- Live verification reproduced silent booking-state loss on a document-question interruption; preserve state for question intent and clarify classification, with unit and integration regressions that failed before the fix.
+- Live Groq output added unsupported tool-role explanations to a technology list; strengthen the grounded-answer prompt to request explicitly stated names and prohibit inferred tool roles, with a prompt regression and live plain-question retest.

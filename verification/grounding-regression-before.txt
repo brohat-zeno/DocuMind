@@ -1,0 +1,30 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+_______________________ test_prompt_grounding_and_order ________________________
+
+    def test_prompt_grounding_and_order() -> None:
+        """Include evidence, history, and latest message with grounding instructions."""
+        history = [ChatMessage(role=MessageRole.USER, content="Prior question")]
+        chunks = [
+            RetrievedChunk(
+                payload=VectorPayload(
+                    document_id=uuid4(),
+                    filename="guide.txt",
+                    chunk_index=0,
+                    text="Document evidence",
+                    chunking_strategy=ChunkingStrategy.RECURSIVE,
+                ),
+                score=0.9,
+            )
+        ]
+        prompt = build_answer_prompt("Follow-up", history, chunks)
+        assert "only from the document context" in prompt[0].content
+        assert "untrusted data" in prompt[0].content
+>       assert "Do not infer tool roles" in prompt[0].content
+E       assert 'Do not infer tool roles' in "Answer only from the document context supplied below. If the context lacks the answer, say you don't know from the do...m. History resolves references but is not evidence for factual claims. Do not invent details or use outside knowledge."
+E        +  where "Answer only from the document context supplied below. If the context lacks the answer, say you don't know from the do...m. History resolves references but is not evidence for factual claims. Do not invent details or use outside knowledge." = ChatMessage(role=<MessageRole.SYSTEM: 'system'>, content="Answer only from the document context supplied below. If the.... History resolves references but is not evidence for factual claims. Do not invent details or use outside knowledge.").content
+
+tests/unit/test_rag.py:46: AssertionError
+=========================== short test summary info ============================
+FAILED tests/unit/test_rag.py::test_prompt_grounding_and_order - assert 'Do n...
+1 failed in 0.98s

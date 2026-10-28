@@ -1,0 +1,43 @@
+name: documind
+services:
+  documind-app:
+    container_name: documind-app
+    image: documind-backend:latest
+    build: .
+    ports:
+      - "${APP_PORT:-8000}:8000"
+    env_file: .env
+    environment:
+      QDRANT_URL: http://documind-qdrant:6333
+      REDIS_URL: redis://documind-redis:6379/0
+      DATABASE_URL: sqlite:////app/data/documind.db
+      EMBEDDING_CACHE_DIR: /app/documind-embedding-cache
+    volumes:
+      - documind_sql_data:/app/data
+      - documind_embedding_cache:/app/documind-embedding-cache
+    depends_on:
+      - documind-qdrant
+      - documind-redis
+  documind-qdrant:
+    container_name: documind-qdrant
+    image: qdrant/qdrant:v1.16.3
+    volumes:
+      - documind_vector_data:/qdrant/storage
+  documind-redis:
+    container_name: documind-redis
+    image: redis:7-alpine
+    command: ["redis-server", "--appendonly", "yes"]
+    volumes:
+      - documind_redis_data:/data
+volumes:
+  documind_sql_data:
+    name: documind_sql_data
+  documind_vector_data:
+    name: documind_vector_data
+  documind_redis_data:
+    name: documind_redis_data
+  documind_embedding_cache:
+    name: documind_embedding_cache
+networks:
+  default:
+    name: documind_default

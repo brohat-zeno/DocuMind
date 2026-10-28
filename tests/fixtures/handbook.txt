@@ -1,0 +1,13 @@
+DOCUMIND DEMONSTRATION HANDBOOK
+
+The DocuMind Learning Centre offers two training plans, in this order: Foundation and Advanced. The Foundation plan costs NPR 3000 per month. It includes two instructor-led workshops each month and access to the beginner exercise library. Foundation is intended for first-time Python learners.
+
+The second plan, Advanced, costs NPR 7500 per month. Advanced includes six instructor-led workshops each month, one individual mentoring session, and access to the advanced exercise library. Learners should complete the Foundation course or pass a placement assessment before joining Advanced.
+
+Both plans include email support. The support desk operates Monday through Friday from 09:00 to 17:00 Nepal time. Support requests are answered within two business days. There is no weekend support desk service.
+
+The learning centre is located in Lalitpur, Nepal. In-person workshops take place in Room 204. Online workshops use a meeting link sent the day before the workshop. Learners should bring a laptop with Python 3.11 or newer installed.
+
+Interview preparation sessions last 45 minutes and cover Python fundamentals, SQL queries, and API design. A learner can request an interview preparation booking by providing a name, email address, future date, and time. A booking is reserved only after the learner confirms the complete summary.
+
+Refund requests must be submitted within seven calendar days of the initial payment. A refund is available only when the learner has attended no workshops. Submit a refund request by emailing support@documind.example with the payment receipt number. This handbook does not state any scholarship or accommodation policy.

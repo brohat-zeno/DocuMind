@@ -1,0 +1,18 @@
+{
+  "working_tree_secret_hits": [],
+  "absolute_path_hits": [],
+  "git_checks": {
+    "status": {
+      "exit_code": 128,
+      "result": "No Git repository"
+    },
+    "grep": {
+      "exit_code": 128,
+      "result": "No Git repository"
+    },
+    "env_history": {
+      "exit_code": 128,
+      "result": "No Git repository"
+    }
+  }
+}
